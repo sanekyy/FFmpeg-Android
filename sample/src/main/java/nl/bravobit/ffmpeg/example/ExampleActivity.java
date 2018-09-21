@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import nl.bravobit.ffmpeg.ExecuteBinaryResponseHandler;
 import nl.bravobit.ffmpeg.FFmpeg;
-import nl.bravobit.ffmpeg.FFprobe;
 import nl.bravobit.ffmpeg.FFtask;
 import timber.log.Timber;
 
@@ -28,15 +27,6 @@ public class ExampleActivity extends AppCompatActivity {
             // ffmpeg is not supported
             Timber.e("ffmpeg not supported!");
         }
-
-        if (FFprobe.getInstance(this).isSupported()) {
-            // ffprobe is supported
-            versionFFprobe();
-        } else {
-            // ffprobe is not supported
-            Timber.e("ffprobe not supported!");
-        }
-
     }
 
     private void versionFFmpeg() {
@@ -52,21 +42,6 @@ public class ExampleActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void versionFFprobe() {
-        Timber.d("version ffprobe");
-        FFprobe.getInstance(this).execute(new String[]{"-version"}, new ExecuteBinaryResponseHandler() {
-            @Override
-            public void onSuccess(String message) {
-                Timber.d(message);
-            }
-
-            @Override
-            public void onProgress(String message) {
-                Timber.d(message);
-            }
-        });
     }
 
     private void ffmpegTestTaskQuit() {
