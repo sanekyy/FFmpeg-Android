@@ -21,7 +21,8 @@ class FFcommandExecuteAsyncTask extends AsyncTask<Void, String, CommandResult> i
     private String output = "";
     private boolean quitPending;
 
-    FFcommandExecuteAsyncTask(String[] cmd, Map<String, String> environment, long timeout, FFcommandExecuteResponseHandler ffmpegExecuteResponseHandler) {
+    FFcommandExecuteAsyncTask(String[] cmd, Map<String, String> environment, long timeout,
+            FFcommandExecuteResponseHandler ffmpegExecuteResponseHandler) {
         this.cmd = cmd;
         this.timeout = timeout;
         this.environment = environment;
@@ -61,7 +62,7 @@ class FFcommandExecuteAsyncTask extends AsyncTask<Void, String, CommandResult> i
     @Override
     protected void onProgressUpdate(String... values) {
         if (values != null && values[0] != null && ffmpegExecuteResponseHandler != null) {
-            ffmpegExecuteResponseHandler.onProgress(values[0], Util.getCurrentProgress(values[0]));
+            ffmpegExecuteResponseHandler.onProgress(values[0]);
         }
     }
 
