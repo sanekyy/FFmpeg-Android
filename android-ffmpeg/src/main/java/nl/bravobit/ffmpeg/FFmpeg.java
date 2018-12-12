@@ -28,12 +28,7 @@ public class FFmpeg implements FFbinaryInterface {
 
     public static FFmpeg getInstance(final Context context) {
         if (instance == null) {
-            instance = new FFmpeg(new FFbinaryContextProvider() {
-                @Override
-                public Context provide() {
-                    return context;
-                }
-            });
+            instance = new FFmpeg(() -> context);
         }
         return instance;
     }

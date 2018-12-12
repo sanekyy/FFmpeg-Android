@@ -41,7 +41,7 @@ class Util {
     }
 
     static boolean killAsync(AsyncTask asyncTask) {
-        return asyncTask != null && !asyncTask.isCancelled() && asyncTask.cancel(true);
+        return asyncTask != null && !asyncTask.isCancelled() && asyncTask.cancel(false);
     }
 
     static boolean isProcessCompleted(Process process) {
